@@ -1,9 +1,9 @@
 :root {
-  /* Fonts */
+  /* *   Fonts */
   --main-fonts: "Roboto", sans-serif;
   --secondary-fonts: "Raleway", sans-serif;
 
-  /* Text colors */
+  /* *   Text colors */
   --primary-brand-color: #4d5ae5;
   --pressed-state-color: #404bbf;
   --green-color: #31d0aa;
@@ -14,11 +14,11 @@
   --text-color: #434455;
   --subtle-text-color: #8e8f99;
 
-  /* Background colors */
+  /* *   Background colors */
   --background-color: #2e2f42;
 }
 
-/* Basic CSS */
+/* *   Basic CSS */
 
 body {
   font-family: var(--main-fonts);
@@ -74,7 +74,7 @@ img {
   padding-bottom: 120px;
 }
 
-/* Header */
+/* *   Header */
 
 .header-container {
   display: flex;
@@ -106,6 +106,7 @@ img {
 }
 
 .header-list-link {
+  position: relative;
   display: inline-block;
   padding-top: 24px;
   padding-bottom: 24px;
@@ -116,19 +117,23 @@ img {
 }
 
 .header-list-link:focus,
-.header-list-link:hover {
+.header-list-link:hover,
+.header-list-link.active,
+.header-contact-link:focus,
+.header-contact-link:hover {
   color: var(--pressed-state-color);
 }
 
-.header-list-link-active {
-  display: inline-block;
-  padding-top: 24px;
-  padding-bottom: 24px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: calc(24 / 16);
-  letter-spacing: 0.02em;
-  color: var(--pressed-state-color);
+.header-list-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--pressed-state-color);
 }
 
 .header-contact-list {
@@ -148,11 +153,6 @@ img {
   color: var(--text-color);
 }
 
-.header-contact-link:focus,
-.header-contact-link:hover {
-  color: var(--pressed-state-color);
-}
-
 .header-contact-link-icon {
   margin-right: 10px;
   fill: var(--text-color);
@@ -163,9 +163,9 @@ img {
   fill: var(--pressed-state-color);
 }
 
-/* Main */
+/* *   Main */
 
-/* Hero */
+/* *   Hero */
 
 .section-hero {
   max-width: 1440px;
@@ -218,7 +218,7 @@ img {
   border-radius: 4px;
 }
 
-/* About */
+/* *   About */
 
 .section-about {
   padding-top: 112px;
@@ -271,7 +271,7 @@ img {
   color: var(--text-color);
 }
 
-/* Activity */
+/* *   Activity */
 
 .activity-title {
   margin-bottom: 72px;
@@ -288,7 +288,7 @@ img {
   gap: 24px;
 }
 
-/* Team */
+/* *   Team */
 
 .section-team {
   max-width: 1440px;
@@ -375,7 +375,7 @@ img {
   fill: var(--light-color);
 }
 
-/* Clients */
+/* *   Clients */
 
 .section-clients {
   padding-top: 130px;
@@ -402,9 +402,6 @@ img {
   justify-content: center;
   width: 168px;
   height: 88px;
-  fill: var(--subtle-text-color);
-  border: 1px solid var(--subtle-text-color);
-  border-radius: 4px;
   cursor: pointer;
 }
 
@@ -414,15 +411,19 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  fill: var(--subtle-text-color);
+  border: 1px solid var(--subtle-text-color);
+  border-radius: 4px;
 }
 
 .clients-list-link:focus,
 .clients-list-link:hover {
   fill: var(--pressed-state-color);
   border: 1px solid var(--pressed-state-color);
+  border-radius: 4px;
 }
 
-/* Footer */
+/* *   Footer */
 
 .footer {
   margin: 0 auto;
@@ -496,7 +497,7 @@ img {
   background-color: var(--green-color);
 }
 
-/* Portfolio */
+/* *   Portfolio */
 
 .header-portfolio {
   margin: 0 auto;
@@ -575,4 +576,48 @@ img {
   line-height: calc(24 / 16);
   letter-spacing: 0.02em;
   color: var(--text-color);
+}
+
+/* *   Modal window */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+}
+
+.modal {
+  position: absolute;
+  top: calc(50% - 288px);
+  left: calc(50% - 204px);
+
+  width: 408px;
+  min-height: 576px;
+  background-color: #fcfcfc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.modal-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  background-color: var(--accent-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.modal-icon {
+  fill: #000000;
 }
