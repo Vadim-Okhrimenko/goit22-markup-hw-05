@@ -221,14 +221,13 @@ img {
   border: none;
 
   transition: background-color var(--transition-speed),
-    box-shadow var(--transition-speed), border-radius var(--transition-speed);
+    box-shadow var(--transition-speed);
 }
 
 .hero-btn:focus,
 .hero-btn:hover {
   background-color: var(--pressed-state-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
 }
 
 /* *   About */
@@ -496,10 +495,9 @@ img {
 .footer-social-link {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 8px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
   fill: var(--light-color);
@@ -675,15 +673,19 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
   width: 24px;
   height: 24px;
   background-color: var(--accent-color);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   cursor: pointer;
+
+  transition: fill var(--transition-speed),
+    background-color var(--transition-speed);
 }
 
-.modal-icon {
-  fill: #000000;
+.modal-btn:hover,
+.modal-btn:focus {
+  fill: var(--white-color);
+  background-color: var(--pressed-state-color);
 }
